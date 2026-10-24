@@ -621,8 +621,7 @@ mod tests {
             ("docs/brand/artcraft-mark.svg", "icon", false),
             ("assets/icons/mark.svg", "logo", false),
         ] {
-            let mut a = asset(path, "Storyteller", kind, BRAND_LICENCE);
-            a.licence_file = "docs/brand/LICENSE-brand.txt".into();
+            let a = asset(path, "Storyteller", kind, BRAND_LICENCE);
             let m = Manifest { asset: vec![a], ..Default::default() };
             let p = check(&root, &m, &[], &BTreeSet::new());
             assert_eq!(p.iter().all(|p| !p.contains("allowlist")), pass, "{path} {kind}: {p:?}");
